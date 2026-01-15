@@ -1,0 +1,46 @@
+/* Responsive Design */
+@media screen and (max-width: 480px) {
+    :root { font-size: 14px; }
+    .container { padding: 0; }
+    .weather-card {
+        border-radius: 20px;
+        padding: var(--spacing-md);
+    }
+    .card-title { font-size: 1.6rem; }
+    .weather-icon { font-size: 2.5rem; }
+    .value-number { font-size: 2.2rem; }
+}
+
+@media screen and (max-width: 360px) {
+    .weather-section { padding: var(--spacing-md); }
+    .weather-icon { font-size: 2rem; }
+    .value-number { font-size: 2rem; }
+}
+
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    body { padding: var(--spacing-xs); }
+    .weather-card { padding: var(--spacing-sm); }
+    .card-header {
+        margin-bottom: var(--spacing-sm);
+        padding-bottom: var(--spacing-sm);
+    }
+    .weather-section {
+        padding: var(--spacing-sm);
+        margin-bottom: var(--spacing-sm);
+    }
+}
+
+/* Accessibilité */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+*:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+}

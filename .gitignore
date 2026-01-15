@@ -1,0 +1,39 @@
+# PlatformIO
+.pio/
+.vscode/
+
+# Configuration sensible
+include/config.h
+telegraf.conf
+frontend/.htpasswd
+
+# Logs
+*.log
+
+# Docker volumes
+mqtt/config/passwd
+mqtt/data/
+mqtt/log/
+
+# IDE
+*.code-workspace
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+
+# Node.js (si utilisé)
+node_modules/
+npm-debug.log*
+
+# Données temporaires
+*.tmp
+*.temp

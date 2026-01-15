@@ -1,0 +1,404 @@
+/* ===================================
+   VARIABLES CSS - Configuration globale
+   =================================== */
+:root {
+    /* Palette de couleurs Dark Mode */
+    --bg-primary: #0a0e14;
+    --bg-secondary: #161d27;
+    --bg-card: #1a2332;
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-muted: #6e7681;
+    
+    /* Couleurs de température */
+    --color-cold: #00d9ff;        /* Cyan néon pour froid */
+    --color-comfort: #00ff9d;     /* Vert émeraude pour confort */
+    --color-warm: #ff6b35;        /* Orange pour chaud */
+    --color-hot: #ff3838;         /* Rouge pour très chaud */
+    
+    /* Couleurs d'accentuation */
+    --color-accent: #58a6ff;
+    --color-success: #3fb950;
+    --color-warning: #d29922;
+    --color-error: #f85149;
+    
+    /* Ombres et effets */
+    --shadow-small: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.5);
+    --shadow-large: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --glow-effect: 0 0 20px rgba(88, 166, 255, 0.3);
+    
+    /* Espacements */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.4s ease;
+    --transition-slow: 0.6s ease;
+}
+
+/* ===================================
+   RESET ET BASE
+   =================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm);
+    line-height: 1.6;
+}
+
+/* ===================================
+   CONTENEUR PRINCIPAL
+   =================================== */
+.container {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+/* ===================================
+   CARTE MÉTÉO
+   =================================== */
+.weather-card {
+    background: var(--bg-card);
+    border-radius: 24px;
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-large);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+.weather-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-large), var(--glow-effect);
+}
+
+/* ===================================
+   EN-TÊTE DE LA CARTE
+   =================================== */
+.card-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+    letter-spacing: -0.5px;
+}
+
+.card-subtitle {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* ===================================
+   INDICATEUR DE STATUT
+   =================================== */
+.status-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    margin-bottom: var(--spacing-lg);
+    font-size: 0.85rem;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-warning);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.status-indicator.connected .status-dot {
+    background: var(--color-success);
+    animation: none;
+}
+
+.status-indicator.error .status-dot {
+    background: var(--color-error);
+    animation: blink 1s ease-in-out infinite;
+}
+
+.status-text {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+/* ===================================
+   SECTIONS MÉTÉO
+   =================================== */
+.weather-section {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.weather-section:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.weather-section:last-of-type {
+    margin-bottom: 0;
+}
+
+.weather-icon {
+    font-size: 3rem;
+    line-height: 1;
+    opacity: 0.9;
+    transition: transform var(--transition-medium);
+}
+
+.weather-section:hover .weather-icon {
+    transform: scale(1.1);
+}
+
+.weather-data {
+    flex: 1;
+}
+
+.weather-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--spacing-xs);
+}
+
+.weather-value {
+    display: flex;
+    align-items: baseline;
+    gap: 0.3rem;
+}
+
+.value-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+    transition: color var(--transition-medium);
+}
+
+.value-unit {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+/* ===================================
+   COULEURS DYNAMIQUES DE TEMPÉRATURE
+   =================================== */
+/* Température froide (< 18°C) - Bleu cyan */
+.temperature-section.temp-cold .value-number {
+    color: var(--color-cold);
+    text-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+}
+
+/* Température confortable (18°C - 25°C) - Vert émeraude */
+.temperature-section.temp-comfort .value-number {
+    color: var(--color-comfort);
+    text-shadow: 0 0 20px rgba(0, 255, 157, 0.4);
+}
+
+/* Température chaude (25°C - 30°C) - Orange */
+.temperature-section.temp-warm .value-number {
+    color: var(--color-warm);
+    text-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
+}
+
+/* Température très chaude (> 30°C) - Rouge */
+.temperature-section.temp-hot .value-number {
+    color: var(--color-hot);
+    text-shadow: 0 0 20px rgba(255, 56, 56, 0.4);
+}
+
+/* ===================================
+   FOOTER DE LA CARTE
+   =================================== */
+.card-footer {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.last-update {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    font-style: italic;
+}
+
+/* ===================================
+   ANIMATIONS
+   =================================== */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.weather-section {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.weather-section:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.weather-section:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN - SMARTPHONE VERTICAL
+   =================================== */
+@media screen and (max-width: 480px) {
+    :root {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: 0;
+    }
+    
+    .weather-card {
+        border-radius: 20px;
+        padding: var(--spacing-md);
+    }
+    
+    .card-title {
+        font-size: 1.6rem;
+    }
+    
+    .weather-icon {
+        font-size: 2.5rem;
+    }
+    
+    .value-number {
+        font-size: 2.2rem;
+    }
+}
+
+/* Ajustements pour très petits écrans */
+@media screen and (max-width: 360px) {
+    .weather-section {
+        padding: var(--spacing-md);
+    }
+    
+    .weather-icon {
+        font-size: 2rem;
+    }
+    
+    .value-number {
+        font-size: 2rem;
+    }
+}
+
+/* ===================================
+   MODE PAYSAGE MOBILE
+   =================================== */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding: var(--spacing-xs);
+    }
+    
+    .weather-card {
+        padding: var(--spacing-sm);
+    }
+    
+    .card-header {
+        margin-bottom: var(--spacing-sm);
+        padding-bottom: var(--spacing-sm);
+    }
+    
+    .weather-section {
+        padding: var(--spacing-sm);
+        margin-bottom: var(--spacing-sm);
+    }
+}
+
+/* ===================================
+   ACCESSIBILITÉ
+   =================================== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus visible pour navigation clavier */
+*:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Station météo en temps réel - Température et Humidité">
+    <meta name="keywords" content="météo, température, humidité, ESP32, IoT, temps réel">
+    <meta name="author" content="Station Météo ESP32">
+    <title>Station Météo ESP32</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="assets/manifest.json">
+    
+    <!-- Icônes PWA -->
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16x16.png">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    
+    <!-- Métadonnées PWA iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Météo ESP32">
+    
+    <!-- Métadonnées PWA Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#58a6ff">
+    <meta name="msapplication-TileColor" content="#0a0e14">
+    <meta name="msapplication-navbutton-color" content="#58a6ff">
+    
+    <!-- Google Fonts - Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="container">
+        <main class="weather-card" role="main" aria-label="Données météorologiques en temps réel">
+            <!-- En-tête -->
+            <header class="card-header">
+                <h1 class="card-title">Station Météo</h1>
+                <p class="card-subtitle">ESP32 - Temps Réel</p>
+            </header>
+
+            <!-- Indicateur de statut de connexion -->
+            <div class="status-indicator" id="statusIndicator" aria-live="polite">
+                <span class="status-dot"></span>
+                <span class="status-text">Connexion en cours...</span>
+            </div>
+
+            <!-- Section Température -->
+            <section class="weather-section temperature-section">
+                <div class="weather-icon" aria-hidden="true">🌡️</div>
+                <div class="weather-data">
+                    <div class="weather-label">Température</div>
+                    <div class="weather-value" id="tempValue" aria-label="Valeur de température">
+                        <span class="value-number">--</span>
+                        <span class="value-unit">°C</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Humidité -->
+            <section class="weather-section humidity-section">
+                <div class="weather-icon" aria-hidden="true">💧</div>
+                <div class="weather-data">
+                    <div class="weather-label">Humidité</div>
+                    <div class="weather-value" id="humValue" aria-label="Valeur d'humidité">
+                        <span class="value-number">--</span>
+                        <span class="value-unit">%</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section Graphiques -->
+            <section class="charts-section">
+                <h2 class="section-title">Moyennes de Température</h2>
+                
+                <div class="chart-container">
+                    <a href="chart.html?days=7" class="chart-card">
+                        <h3 class="chart-title">7 derniers jours</h3>
+                        <div class="chart-value" id="avg7days">
+                            <span class="value-number">--</span>
+                            <span class="value-unit">°C</span>
+                        </div>
+                    </a>
+                    
+                    <a href="chart.html?days=30" class="chart-card">
+                        <h3 class="chart-title">30 derniers jours</h3>
+                        <div class="chart-value" id="avg30days">
+                            <span class="value-number">--</span>
+                            <span class="value-unit">°C</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Footer avec dernière mise à jour -->
+            <footer class="card-footer">
+                <p class="last-update" id="lastUpdate">En attente de données...</p>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Scripts modulaires chargés dans l'ordre de dépendance -->
+    <script type="module" src="js/config.js"></script>
+    <script type="module" src="js/weatherService.js"></script>
+    <script type="module" src="js/weatherDisplay.js"></script>
+    <script type="module" src="js/pwaManager.js"></script>
+    <script type="module" src="js/app.js"></script>
+    
+    <!-- Noscript fallback -->
+    <noscript>
+        <style>
+            body::before {
+                content: "JavaScript est requis pour cette application";
+                display: block;
+                text-align: center;
+                padding: 20px;
+                background: var(--color-error);
+                color: white;
+            }
+        </style>
+    </noscript>
+</body>
+</html>

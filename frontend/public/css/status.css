@@ -1,0 +1,86 @@
+/* Indicateur de Statut */
+.status-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 20px;
+    margin-bottom: var(--spacing-lg);
+    font-size: 0.85rem;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-warning);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.status-indicator.connected .status-dot {
+    background: var(--color-success);
+    animation: none;
+}
+
+.status-indicator.error .status-dot {
+    background: var(--color-error);
+    animation: blink 1s ease-in-out infinite;
+}
+
+.status-text {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+/* Bouton PWA */
+.pwa-install-button {
+    background: linear-gradient(135deg, var(--color-accent) 0%, #4a9eff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.pwa-install-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.pwa-install-button:hover::before {
+    left: 100%;
+}
+
+.pwa-install-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-large), var(--glow-effect);
+}
+
+.pwa-install-button:active {
+    transform: translateY(0);
+}
+
+/* Notification de mise à jour */
+.update-notification {
+    animation: slideInFromRight 0.3s ease-out;
+}
+
+.update-notification .update-btn {
+    background: var(--color-success);
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.update-notification .update-btn:hover {
+    background: #2ea043;
+}

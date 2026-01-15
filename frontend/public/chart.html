@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphiques - Station Météo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        .back-button {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--color-accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: var(--spacing-md);
+            transition: background var(--transition-fast);
+        }
+        .back-button:hover {
+            background: #1d4ed8;
+        }
+        .chart-container-wrapper {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-md);
+            position: relative;
+            height: 500px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+        @media screen and (max-width: 768px) {
+            .container {
+                max-width: 100% !important;
+                padding: var(--spacing-xs);
+            }
+            .weather-card {
+                padding: var(--spacing-md);
+                border-radius: 16px;
+            }
+            .chart-container-wrapper {
+                height: 350px;
+                padding: var(--spacing-sm);
+            }
+            .card-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="max-width: 1200px;">
+        <main class="weather-card">
+            <a href="index.html" class="back-button">← Retour</a>
+            
+            <header class="card-header">
+                <h1 class="card-title" id="pageTitle">Graphique 7 jours</h1>
+            </header>
+
+            <div class="chart-container-wrapper">
+                <canvas id="tempChart"></canvas>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="js/chart.js"></script>
+</body>
+</html>

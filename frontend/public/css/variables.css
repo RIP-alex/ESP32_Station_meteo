@@ -1,0 +1,40 @@
+/* Variables CSS - Configuration globale */
+:root {
+    /* Couleurs Dark Mode - Nouveau thème */
+    --bg-primary: #134ed9;
+    --bg-secondary: #1e293b;
+    --bg-card: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    
+    /* Couleurs de température - Plus vives */
+    --color-cold: #3b82f6;
+    --color-comfort: #10b981;
+    --color-warm: #f59e0b;
+    --color-hot: #ef4444;
+    
+    /* Couleurs d'accentuation */
+    --color-accent: #6366f1;
+    --color-success: #10b981;
+    --color-warning: #f59e0b;
+    --color-error: #ef4444;
+    
+    /* Ombres et effets */
+    --shadow-small: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.4);
+    --shadow-large: 0 10px 25px rgba(0, 0, 0, 0.5);
+    --glow-effect: 0 0 30px rgba(99, 102, 241, 0.4);
+    
+    /* Espacements */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.4s ease;
+    --transition-slow: 0.6s ease;
+}

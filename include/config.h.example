@@ -1,0 +1,27 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+// Configuration WiFi
+#define WIFI_SSID "VotreSSID"
+#define WIFI_PASSWORD "VotreMotDePasse"
+
+// Configuration MQTT
+#define MQTT_BROKER "192.168.1.100"  // IP de votre broker MQTT
+#define MQTT_PORT 1883
+#define MQTT_CLIENT_ID "station_meteo_esp32"
+#define MQTT_TOPIC "meteo/donnees"
+
+// Configuration capteurs
+#define DHTPIN 4        // Pin GPIO pour le DHT22
+#define DHTTYPE DHT22   // Type de capteur DHT
+
+// Configuration écran OLED
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define OLED_RESET -1
+#define OLED_ADDRESS 0x3C
+
+// Timing
+#define LECTURE_INTERVAL 30000  // Intervalle de lecture en ms (30 secondes)
+
+#endif

@@ -1,0 +1,41 @@
+# Configuration Telegraf pour Station Météo
+
+[agent]
+  interval = "10s"
+  round_interval = true
+  metric_batch_size = 1000
+  metric_buffer_limit = 10000
+  collection_jitter = "0s"
+  flush_interval = "10s"
+  flush_jitter = "0s"
+  precision = ""
+  debug = false
+  quiet = false
+  hostname = "station-meteo"
+
+# 1. ENTRÉE : Écoute du broker MQTT
+[[inputs.mqtt_consumer]]
+  # Adresse du conteneur Mosquitto (nom du service dans docker-compose)
+  servers = ["tcp://mqtt:1883"]
+  
+  # Le sujet à écouter
+  topics = [
+    "station_meteo/#"
+  ]
+
+  # Format des données (JSON)
+  data_format = "json"
+  
+  # Authentification MQTT (optionnel)
+  # username = "votre_utilisateur_mqtt"
+  # password = "votre_mot_de_passe_mqtt"
+
+# 2. SORTIE : Écriture dans InfluxDB
+[[outputs.influxdb_v2]]
+  # Adresse du conteneur InfluxDB
+  urls = ["http://influxdb:8086"]
+
+  # Configuration InfluxDB (à adapter selon votre installation)
+  token = "VOTRE_TOKEN_INFLUXDB"
+  organization = "VOTRE_ORGANISATION"
+  bucket = "station_meteo"
