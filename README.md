@@ -1,4 +1,7 @@
-# 🌡️ Station Météo ESP32
+# 🌡️ Station Météo ESP32   
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Docker](https://img.shields.io/badge/docker-ready-success)
+![Docs](https://img.shields.io/badge/docs-complete-green)
 
 Station météorologique connectée avec interface web moderne et palette de couleurs dynamique selon la température.
 
