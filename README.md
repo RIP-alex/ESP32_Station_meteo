@@ -171,8 +171,8 @@ Consultez les guides complets :
 ### Graphiques Historiques
 
 **Moyennes sur 7 et 30 jours**
-
-![Graphiques](screenshots/graphiques.png)
+![Graphiques](screenshots/graphique7.png)
+![Graphiques](screenshots/graphique.png)
 
 ## 📖 Documentation
 
