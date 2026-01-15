@@ -234,3 +234,6 @@ MIT License - Voir [LICENSE](LICENSE)
 ## 🙏 Remerciements
 
 Projet développé avec les bibliothèques Adafruit, Chart.js, InfluxDB et Eclipse Mosquitto.
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Docker](https://img.shields.io/badge/docker-ready-success)
+![Docs](https://img.shields.io/badge/docs-complete-green)
